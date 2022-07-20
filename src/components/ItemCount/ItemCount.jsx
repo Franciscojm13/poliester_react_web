@@ -1,34 +1,36 @@
 import { useState } from 'react'
-import React from 'react'
 
-const ItemCount = () => {
+const ItemCount = ({stock, initial, onAdd}) => {
 
-    const [contador, setContador]=useState(0)
+    const [contador, setContador]=useState(initial)
 
-    function funcionSumarProducto(){
+    function funcionSumarProducto(){      //handleAdd
+        if(contador>=stock){
+            console.log(`No hay mas productos en stock, no puede agregar mas unidades al cariito.`)
+            return;
+        }
         setContador(contador+1)   
     }
-    function funcionRestarProducto(){
-        if(contador>0){
-        setContador(contador-1)   
+    function funcionRestarProducto(){    //handleResta
+        if(contador>1){
+            setContador(contador-1)   
+        }else{
+            console.log('No puede seguir quitando unidades')
         }
     }
 
-    function agregarAlCarrito(){
-        console.log(`Se hán agregado ${contador} productos al carrito`)
-    }
 
     return (
         <>
-            <div className='container d-inline-flex flex-column justify-content-center align-items-center mx-auto'>
+            <div className='card d-inline-flex flex-column justify-content-center align-items-center mx-auto'>
 
                 <div>Unidades del producto:</div>
                     <div className=' d-flex justify-content-center mx-auto mt-3'>
-                            <button onClick={funcionRestarProducto}> - </button>    
+                            <button className='btn btn-primary' onClick={funcionRestarProducto}> - </button>   
                             <div>{contador}</div>
-                            <button onClick={funcionSumarProducto}> + </button>
+                            <button className='btn btn-primary' onClick={funcionSumarProducto}> + </button>
                     </div>
-                    <button className='mt-3' onClick={agregarAlCarrito}> Agregar al carrito </button>
+                    <button className='mt-3 btn btn-success' onClick={()=>{onAdd(contador)}}> Agregar al carrito </button>
                     
             </div>
             
