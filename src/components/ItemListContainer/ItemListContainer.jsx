@@ -16,7 +16,7 @@ const ItemListContainer = ({saludoContenedorItems}) => {
     }
 
     useEffect(()=>{
-        getProductosCollage()   //mock
+        getProductosCollage()   //async mock
         .then(resp=>{
             setProductosCollage(resp)
         })

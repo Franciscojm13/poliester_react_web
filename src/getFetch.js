@@ -102,6 +102,6 @@ export const getProductosCollage = ()=>{
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve(productosCollage)
-        },3000)
+        },2000)
     })
 }
