@@ -1,4 +1,4 @@
-import iconoCarrito from '../../icons/shopping-cart.png'
+import iconoCarrito from '../../../assets/icons/shopping-cart.png'
 
 const CartWidget = () => {
     return (
