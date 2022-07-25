@@ -98,10 +98,14 @@ const productosCollage=[
                         }
 ]
 
-export const getProductosCollage = ()=>{
-    return new Promise((resolve)=>{
+export const getProductosCollage = (id)=>{           //función que nos retorna un objeto o el array completo 
+    return new Promise((resolve)=>{       
         setTimeout(()=>{
-            resolve(productosCollage)
+            if(id){                                                //la condición pregunta si se ingresó o no un id como parámetro
+                resolve(productosCollage.find(prod=>prod.id == id))     //retornamos solo un objeto 
+            } else{
+                resolve(productosCollage)                               //retornamos el array completo
+            } 
         },2000)
     })
 }
