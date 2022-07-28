@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget'
 
 const NavBar = () => {
@@ -6,8 +7,10 @@ const NavBar = () => {
         <>
         <header id="header">
 
+            
+
             <div className="d-flex justify-content-center mx-auto mt-3">
-                <a className="brand " href="index.html"><h1 className=" display-5">Poliéster</h1></a>
+                <Link to={'/'} style={{ textDecoration: 'none' }}><h1 className=" display-5">Poliéster</h1></Link>
                 
             </div>
 
@@ -20,13 +23,13 @@ const NavBar = () => {
                     </button>
                     <div className="collapse navbar-collapse " id="navbarNav">
                         <ul className=" navbar-nav  list-unstyled text-center">
-                            <li className="nav-item px-4"><a className="nav-link" href="index.html">Inicio</a></li>
-                            <li className="nav-item px-4"><a className="nav-link" href="./html/collage.html">Collage</a></li>
-                            <li className="nav-item px-4"><a className="nav-link" href="./html/galletas_toyota.html">Galletas Toyota</a></li>
-                            <li className="nav-item px-4"><a className="nav-link" href="./html/sonidos.html">Sonidos</a></li>
-                            <li className="nav-item px-4"><a className="nav-link" href="./html/sobre_mi.html">Sobre mi</a></li>
-                            <li className="nav-item px-4"><a className="nav-link" href="./html/contacto.html">Contacto</a></li>
-                            <li className="nav-item px-4"><a className="nav-link"> <CartWidget/> </a></li>
+                            <Link to={'/'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4"> Inicio </li></Link>
+                            <li className="nav-item nav-link px-4">Collage</li>
+                            <li className="nav-item nav-link px-4">Galletas Toyota</li>
+                            <li className="nav-item nav-link px-4">Sonidos</li>
+                            <li className="nav-item nav-link px-4">Sobre mi</li>
+                            <li className="nav-item nav-link px-4">Contacto</li>
+                            <Link to={'/Cart'}><li className="nav-item nav-link px-4">  <CartWidget/> </li></Link>
                         </ul>
                     </div>
                 </div>

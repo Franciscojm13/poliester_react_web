@@ -2,6 +2,7 @@
 //Tarjetas:
 
 .card {
+    background-color: map-get($map: $color-map, $key: colorbg) !important;
     flex-direction: row;
     border-radius: $border-radius;
     border: none;
@@ -27,6 +28,11 @@
 .card-img-top{
     border-radius: $border-radius;
 }
+
+.card-img{
+    width: 100%;
+}
+
 .imagenSobreMi img{
     @extend .card-img-top;
 }

@@ -12,11 +12,17 @@
 
 #body{
     background-color: map-get($map: $color-map, $key: colorbg);
+    
+}
+
+.border{
+    border-color: map-get($map: $color-map, $key: secondary-color ) ;
 }
 
 .contenedor{
     background-color: map-get($map: $color-map, $key: container-color);
     border-radius: $border-radius;
+    
 }
 
 

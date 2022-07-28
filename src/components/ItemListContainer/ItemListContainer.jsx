@@ -5,7 +5,7 @@ import ItemList from './ItemList/ItemList'
 import ItemCount from "../ItemCount/ItemCount"
 
 
-const ItemListContainer = ({saludoContenedorItems}) => {
+const ItemListContainer = () => {
 
     const [productosCollage, setProductosCollage]=useState([])
     const [cargandoPagina, setCargandoPagina]=useState(true)
@@ -28,14 +28,19 @@ const ItemListContainer = ({saludoContenedorItems}) => {
     console.log(productosCollage)
 
     return (
-        <div className="card">
-            
-            {saludoContenedorItems}
+        <div >
 
-            { cargandoPagina ? <h1>Cargando los items ...</h1>
+            { cargandoPagina ? <h2>Cargando los items ...</h2>
                 :
-                <ItemList productos={productosCollage}/>
-                
+                <div className="contenedor mx-3 mb-3 p-3">
+                    <div className=" contenedor card-body mb-3 border ">
+                        <div id="galeriaProductos" className="">
+                            <div className="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3 ">
+                                <ItemList productos={productosCollage}/>  
+                            </div> 
+                        </div> 
+                    </div>
+                </div>
             } 
             
             <ItemCount stock={10} initial={1} onAdd={agregarAlCarrito} />

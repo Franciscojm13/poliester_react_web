@@ -1,35 +1,36 @@
 
 //Header:
 
-.brand{
+
+
+h1{
+    
     text-decoration: none;
+    color: black;
+    @include animation_fadeInDown();
+    transition: 0.3s ease;
+    &:hover{
+        transform: scale(1.1);
+        background-color: #c2eaba;
+        background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+        background-size: 1800% 1800%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border: 2px black;
+        animation: rainbow_animation 2s ease-in-out infinite;
+        animation-fill-mode: forwards;
+        background-size: 400% 100%;
 
-    h1{
-        color: black;
-        @include animation_fadeInDown();
-        transition: 0.3s ease;
-        &:hover{
-            transform: scale(1.1);
-            background-color: #c2eaba;
-            background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
-            background-size: 1800% 1800%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            border: 2px black;
-            animation: rainbow_animation 2s ease-in-out infinite;
-            animation-fill-mode: forwards;
-            background-size: 400% 100%;
-
-        }
-        
     }
-    @keyframes rainbow_animation { 
-        0%{background-position:0% 82%}
-        50%{background-position:100% 19%}
-        100%{background-position:0% 82%;}
-    }
+    
 }
+@keyframes rainbow_animation { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%;}
+}
+
 
 .navbar{
     @include animation_fadeInDown();
@@ -40,7 +41,7 @@
 }
 
 .navbar-light {
-    color: map-get($map: $color-map, $key: title-color );
+    color: map-get($map: $color-map, $key: title-color ) !important;
 }
 
 .navbar-light .navbar-brand{

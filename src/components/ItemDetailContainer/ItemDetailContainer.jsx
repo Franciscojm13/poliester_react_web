@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { getProductosCollage } from '../../getFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 const ItemDetailContainer = () => {
 
     const [detalleProducto, setDetalleProducto]=useState({}) //inicializamos el estado con un objeto vacío
-
-    const detalleId="c13"    //hardcode de id
+    const {idDetalleProducto}=useParams()                     //debe ser el mismo nombre que pusimos en la ruta del Route
+    
+    console.log(idDetalleProducto)
 
     useEffect(() => {
 
-        getProductosCollage(detalleId)
-        .then(respuesta=>console.log(respuesta))
+        getProductosCollage(idDetalleProducto)
+        .then(respuesta=>setDetalleProducto(respuesta))
     }, [])
     
 
     return (
         <div>
-            ItemDetailContainer
+            
             <ItemDetail detalleProducto={detalleProducto} />
 
         </div>
