@@ -1,8 +1,10 @@
 import { useState } from 'react'
 
-const ItemCount = ({stock, initial, onAdd}) => {
 
-    const [contador, setContador]=useState(initial)
+const ItemCount = ({stock, initial, onAddToCart}) => {
+
+    const [contador, setContador]=useState(initial)   
+
 
     function funcionSumarProducto(){      //handleAdd
         if(contador>=stock){
@@ -19,6 +21,13 @@ const ItemCount = ({stock, initial, onAdd}) => {
         }
     }
 
+    function handleAddToCart(){    //abatracción de la función onAddtoCart
+        if(contador<stock){
+            onAddToCart(contador)
+        }
+        
+    }
+
 
     return (
         <>
@@ -30,8 +39,8 @@ const ItemCount = ({stock, initial, onAdd}) => {
                             <div>{contador}</div>
                             <button className='btn btn-primary' onClick={funcionSumarProducto}> + </button>
                     </div>
-                    <button className='mt-3 btn btn-success' onClick={()=>{onAdd(contador)}}> Agregar al carrito </button>
-                    
+                            <button className='mt-3 btn btn-success' onClick={handleAddToCart}> Agregar al carrito </button>
+
             </div>
             
         </>

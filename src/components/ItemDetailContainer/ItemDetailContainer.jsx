@@ -10,9 +10,9 @@ const ItemDetailContainer = () => {
     
     console.log(idDetalleProducto)
 
-    useEffect(() => {
+    useEffect(() => {    //busca y trae el producto seleccionado
 
-        getProductosCollage(idDetalleProducto)
+        getProductosCollage(idDetalleProducto)   //getFetch
         .then(respuesta=>setDetalleProducto(respuesta))
     }, [])
     
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
             <ItemDetail detalleProducto={detalleProducto} />
 
         </div>
-    )
+    ) 
 }
 
 export default ItemDetailContainer

@@ -17,7 +17,8 @@ function App() {
       <NavBar />
         <Routes>
           <Route index path='/'element={<ItemListContainer/>}/>
-          <Route path='/itemDetalle/:idDetalleProducto'element={<ItemDetailContainer/>}/>   
+          <Route path='/itemDetalle/:idDetalleProducto'element={<ItemDetailContainer/>}/>
+          <Route path='/categoria/:idCategoria' element={<ItemListContainer/>}></Route>   
           <Route path='/cart'element={<Cart/>}/>
           <Route path='*'element={<Navigate to='/'/>}/> 
         </Routes>
