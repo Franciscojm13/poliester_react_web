@@ -1,5 +1,6 @@
-import {useState} from "react"
+import { useState } from "react"
 import {Link} from "react-router-dom"
+import { useCartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
 
 
@@ -8,13 +9,13 @@ import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ({detalleProducto}) => {
 
-    const [cantidadAgregada, setCantidadAgregada] = useState(true)  //estado que almacena la cantidad agregada al carrito
+    const {agregarCarrito, listaCart, isInCart} = useCartContext()
 
-
-    const agregarAlCarrito=(cantidadTotalProducto)=>{                  //función onAdd
+    const onAddCarrito=(cantidadTotalProducto)=>{                  //función onAdd
         console.log(`Se hán agregado ${cantidadTotalProducto} productos al carrito`)
-        setCantidadAgregada(false)           //actualizamos el estado para que se haga el re-rendering condicional
+        agregarCarrito({...detalleProducto, cantidad: cantidadTotalProducto})
     }
+    console.log(listaCart)
     
     return (
         <div className="contenedor mx-3 mb-3 p-3">
@@ -28,10 +29,11 @@ const ItemDetail = ({detalleProducto}) => {
                             <p className="card-text lead">Detalle: Collage análogo 13x18 cm impreso en papel Fine Art.</p>
                             <p>Precio:{detalleProducto.precio} CLP</p>
 
-                            {cantidadAgregada ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
-                                <ItemCount stock={10} initial={1} onAddToCart={agregarAlCarrito} />
-                                :
+                            {isInCart(detalleProducto.id) ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
+                                
                                 <Link to={'/cart'} ><button className='mt-3 btn btn-success'>Ver el Carrito</button>  </Link>  //cuando el estado sea false, se mostrará este botón linkeado cl cart.
+                                :
+                                <ItemCount stock={10} initial={1} onAddToCart={onAddCarrito} />
                             }
 
                         </div>
