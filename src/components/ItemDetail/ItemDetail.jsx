@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {Link} from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
@@ -9,11 +9,15 @@ import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ({detalleProducto}) => {
 
-    const {agregarCarrito, listaCart, isInCart} = useCartContext()
+    const [cambioBotonAgregar, setCambioBotonAgregar] = useState(true)
+
+    const {agregarCarrito, listaCart} = useCartContext()
+
 
     const onAddCarrito=(cantidadTotalProducto)=>{                  //función onAdd
         console.log(`Se hán agregado ${cantidadTotalProducto} productos al carrito`)
         agregarCarrito({...detalleProducto, cantidad: cantidadTotalProducto})
+        setCambioBotonAgregar(false)
     }
     console.log(listaCart)
     
@@ -29,11 +33,13 @@ const ItemDetail = ({detalleProducto}) => {
                             <p className="card-text lead">Detalle: Collage análogo 13x18 cm impreso en papel Fine Art.</p>
                             <p>Precio:{detalleProducto.precio} CLP</p>
 
-                            {isInCart(detalleProducto.id) ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
+                            {cambioBotonAgregar ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
                                 
-                                <Link to={'/cart'} ><button className='mt-3 btn btn-success'>Ver el Carrito</button>  </Link>  //cuando el estado sea false, se mostrará este botón linkeado cl cart.
+                                    <ItemCount stock={10} initial={1} onAddToCart={onAddCarrito} />
                                 :
-                                <ItemCount stock={10} initial={1} onAddToCart={onAddCarrito} />
+                                    <Link to={'/cart'} >
+                                        <button className='mt-3 btn btn-success'>Ver el Carrito</button>
+                                    </Link>  //cuando el estado sea false, se mostrará este botón linkeado cl cart.
                             }
 
                         </div>

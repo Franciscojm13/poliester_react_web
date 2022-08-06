@@ -85,10 +85,23 @@ const ItemListContainer = () => {
 
     console.log(productosCollage)
 
+    const CargandoPagina=()=>{         //abstracción del Loading en un componente
+        useEffect(()=>{
+            return ()=> console.log("componente CargandoPagina desmontado")
+        })
+
+        return (
+            <h2>Cargando los Items...</h2>
+        )
+    }
+
+
+
     return (
         <div >
 
-            { cargandoPagina ? <h2>Cargando los items ...</h2>
+            { cargandoPagina ?
+                <CargandoPagina/>
                 :
                     <ItemList productos={productosCollage}/>  
             } 

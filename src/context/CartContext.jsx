@@ -15,7 +15,15 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
     const [listaCart, setListaCart]=useState([]) 
     
     const agregarCarrito = (objetoACart)=>{
-        setListaCart([...listaCart, objetoACart])
+        const poscionItemRepetido=listaCart.findIndex(prod=> prod.id===objetoACart.id) // función que busca un repetido. Find devuelve la posición en donde está el repetido. Tira -1 si no lo encuentra
+        if (poscionItemRepetido!=-1) {
+
+            listaCart[poscionItemRepetido].cantidad += objetoACart.cantidad
+            setListaCart([...listaCart])
+
+        }else{
+            setListaCart([...listaCart, objetoACart])
+        }
     }
 
     const vaciarCarrito=()=>{
@@ -23,24 +31,30 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         setListaCart([])
     }
 
-    const isInCart = (idRepetido)=>{
-        return ( 
-            listaCart.some(prod=>prod.id===idRepetido)
-        )
+    const precioTotal = ()=>{
+        let acumuladorPrecio=0
+        listaCart.forEach(prod=>{
+            acumuladorPrecio+=parseInt(prod.precio)*prod.cantidad
+        })
+        return acumuladorPrecio
     }
 
-    // const getCantidad = () => {
-    //     let contador = 0
-    //     cart.forEach(prod => {
-    //         contador = contador+= prod.cantidad
-    //     })
 
-    //     return contador
-    // }
+    const getCantidadTotal = () => {
+        let contador = 0
+        listaCart.forEach(prod => {
+            contador+= prod.cantidad
+        })
+        return contador
+    }
+
+    const quitarItem=(idProdQuitado)=>{
+        setListaCart(listaCart.filter(prod=>prod.id!=idProdQuitado)) //filter retorna un nuevo array filtrado
+    }
 
     return (
         <div>
-            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, isInCart}}>
+            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, precioTotal, getCantidadTotal, quitarItem}}>
                 {children}
             </CartContext.Provider>
             
