@@ -27,8 +27,8 @@ const {getCantidadTotal} = useCartContext()
                     <div className="collapse navbar-collapse " id="navbarNav">
                         <ul className=" navbar-nav  list-unstyled text-center">
                             <Link to={'/'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4"> Inicio </li></Link>
-                            <Link to={'/categoria/collageTipo_1'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 1</li></Link>
-                            <Link to={'/categoria/collageTipo_2'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 2</li></Link>
+                            <Link to={'/categoria/Collage Tipo 1'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 1</li></Link>
+                            <Link to={'/categoria/Collage Tipo 2'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 2</li></Link>
                             
                             <li className="nav-item nav-link px-4">Galletas Toyota</li>
                             <li className="nav-item nav-link px-4">Sonidos</li>

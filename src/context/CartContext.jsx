@@ -52,9 +52,38 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         setListaCart(listaCart.filter(prod=>prod.id!=idProdQuitado)) //filter retorna un nuevo array filtrado
     }
 
+    const separadorDeMiles=(numero)=> {
+        let partesNumero = numero.toString().split('.');
+    
+        partesNumero[0] = partesNumero[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+        return partesNumero.join('.');
+    }
+
+    const descontarUnidad=(idProducto)=>{
+        listaCart.forEach(prod=>{
+            if(prod.id==idProducto){
+                prod.cantidad - 1
+                console.log(prod.cantidad)
+
+            }
+        })
+        
+    }
+
+    const aumentarUnidad=(idProducto)=>{
+        listaCart.forEach(prod=>{
+            if(prod.id==idProducto){
+                prod.cantidad + 1
+                console.log(prod.cantidad)
+            }
+        })
+        
+    }
+
     return (
         <div>
-            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, precioTotal, getCantidadTotal, quitarItem}}>
+            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, precioTotal, getCantidadTotal, quitarItem, separadorDeMiles, descontarUnidad, aumentarUnidad}}>
                 {children}
             </CartContext.Provider>
             
