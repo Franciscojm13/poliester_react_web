@@ -1,0 +1,13 @@
+//Cart:
+
+h6, h5{
+    color: map-get($map: $color-map, $key: title-color );
+}
+
+#form1{
+    width: 4em;
+}
+.simboloBtn{
+    width: 1px;
+    text-decoration: none;
+}

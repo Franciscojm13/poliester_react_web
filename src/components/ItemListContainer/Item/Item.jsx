@@ -6,7 +6,7 @@ const Item = ({item}) => {
 
                 
                     
-                        <div className="item__galeriaCollage">
+                        <div className="item__galeriaCollage col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
                             <div><a href="#" id={"vistaPreviaImg_"+item.id}><img src={item.foto} alt={"microbloqueo_"+item.id}/></a></div>
                             <h5 className="text-center my-2">{item.nombre}</h5>
                             <p className="text-center mb-2"><strong> {item.precio+" CLP"}</strong></p>

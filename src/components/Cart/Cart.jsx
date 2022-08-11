@@ -55,18 +55,14 @@ const Cart = () => {
                                                                 <h6 className="text-black mb-0">{`${item.nombre}`}</h6>
                                                             </div>
                                                             <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                                <button className="btn btn-link px-2"
-                                                                    onClick={ ()=> descontarUnidad(item.id) }>
-                                                                    <i className="fas fa-minus"></i>
-                                                                </button>
+                                                                <button className="simboloBtn btn btn-link text-muted "
+                                                                    onClick={ ()=> descontarUnidad(item.id) }>-</button>
 
-                                                                <input id="form1" min="0" name="quantity" defaultValue={item.cantidad}  type="number"
+                                                                <input id="form1" min="0" name="quantity" value={item.cantidad} readOnly type="number"
                                                                     className="form-control form-control-sm" />
 
-                                                                <button className="btn btn-link px-2"
-                                                                    onClick={ ()=> aumentarUnidad(item.id) }>
-                                                                    <i className="fas fa-plus"></i>
-                                                                </button>
+                                                                <button className="simboloBtn btn btn-link text-muted " 
+                                                                    onClick={ ()=> aumentarUnidad(item.id) }>+</button>
                                                             </div>
                                                             <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                                 <h6 className="mb-0">{`$${separadorDeMiles(item.precio*item.cantidad)} CLP`}</h6>

@@ -1,6 +1,9 @@
 
 //Estilos de la galería Collage
 
+#galeriaProductos{
+    flex-wrap: wrap;
+}
 .item__galeriaCollage{    
     margin-bottom: 1rem;
     display: flex;

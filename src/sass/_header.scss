@@ -68,8 +68,3 @@ h1{
     }
 }
 
-//Cart:
-
-h6, h5{
-    color: map-get($map: $color-map, $key: title-color );
-}

@@ -35,11 +35,11 @@ const ItemDetail = ({detalleProducto}) => {
 
                             {cambioBotonAgregar ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
                                 
-                                    <ItemCount stock={10} initial={1} onAddToCart={onAddCarrito} />
+                                    <ItemCount stock={detalleProducto.stock} initial={1} onAddToCart={onAddCarrito} />
                                 :
                                     <Link to={'/cart'} >
                                         <button className='mt-3 btn btn-success'>Ver el Carrito</button>
-                                    </Link>  //cuando el estado sea false, se mostrará este botón linkeado cl cart.
+                                    </Link>  //cuando el estado sea false, se mostrará este botón linkeado al cart.
                             }
 
                         </div>

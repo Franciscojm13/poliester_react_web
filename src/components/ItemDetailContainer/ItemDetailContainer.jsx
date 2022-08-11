@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { getProductosCollage } from '../../getFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
@@ -7,14 +8,18 @@ const ItemDetailContainer = () => {
 
     const [detalleProducto, setDetalleProducto]=useState({}) //inicializamos el estado con un objeto vacío
     const {idDetalleProducto}=useParams()                     //debe ser el mismo nombre que pusimos en la ruta del Route
-    
+
+
     console.log(idDetalleProducto)
 
-    useEffect(() => {    //busca y trae el producto seleccionado
+    useEffect(()=>{
+        const baseDeDatos =getFirestore()
+        const traerProducto = doc(baseDeDatos, 'items', idDetalleProducto) 
+        getDoc(traerProducto)
+        .then(resp=> setDetalleProducto({id: resp.id, ...resp.data()}))
 
-        getProductosCollage(idDetalleProducto)   //getFetch
-        .then(respuesta=>setDetalleProducto(respuesta))
     }, [])
+    console.log(detalleProducto)
     
 
     return (

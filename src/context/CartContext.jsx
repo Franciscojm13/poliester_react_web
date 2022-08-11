@@ -63,21 +63,30 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
     const descontarUnidad=(idProducto)=>{
         listaCart.forEach(prod=>{
             if(prod.id==idProducto){
-                prod.cantidad - 1
-                console.log(prod.cantidad)
-
+                if(prod.cantidad==0){
+                    return
+                }else{
+                    prod.cantidad -= 1
+                    console.log(prod.cantidad)
+                }
+                
             }
         })
-        
+        setListaCart([...listaCart])
     }
 
     const aumentarUnidad=(idProducto)=>{
         listaCart.forEach(prod=>{
             if(prod.id==idProducto){
-                prod.cantidad + 1
-                console.log(prod.cantidad)
+                if(prod.cantidad==prod.stock){
+                    return
+                }else{
+                    prod.cantidad += 1
+                    console.log(prod.cantidad)
+                }
             }
         })
+        setListaCart([...listaCart])
         
     }
 
