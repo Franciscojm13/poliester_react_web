@@ -1,21 +1,18 @@
 
 import { createContext, useState, useContext } from 'react'
 
-
-
-const CartContext = createContext([])
+const CartContext = createContext([])  //creamos nuestro contexto
 
 export const useCartContext = ()=> useContext(CartContext)
 
 
 const CartContextProvider = ({children}) => {      //componente virtual de fachada
 
-    //acá puedo declarar todos los estados y funciones globales, y ya no es necesario ponerlos en App.
-
     const [listaCart, setListaCart]=useState([]) 
     
+    // funcion agregar productos y verifica si ya existen en el carro 
     const agregarCarrito = (objetoACart)=>{
-        const poscionItemRepetido=listaCart.findIndex(prod=> prod.id===objetoACart.id) // función que busca un repetido. Find devuelve la posición en donde está el repetido. Tira -1 si no lo encuentra
+        const poscionItemRepetido=listaCart.findIndex(prod=> prod.id===objetoACart.id) //findIndex devuelve la posición en donde está el repetido. Tira -1 si no lo encuentra
         if (poscionItemRepetido!=-1) {
 
             listaCart[poscionItemRepetido].cantidad += objetoACart.cantidad
@@ -26,11 +23,13 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         }
     }
 
+    //funcion evento vaciar todo el carro
     const vaciarCarrito=()=>{
         console.log("Se ha vaciado el carrito")
         setListaCart([])
     }
 
+    //funcion calculadora de precio total del carro
     const precioTotal = ()=>{
         let acumuladorPrecio=0
         listaCart.forEach(prod=>{
@@ -39,8 +38,8 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         return acumuladorPrecio
     }
 
-
-    const getCantidadTotal = () => {
+    //funcion sumatoria de items en el carro
+    const cantidadTotal = () => {
         let contador = 0
         listaCart.forEach(prod => {
             contador+= prod.cantidad
@@ -48,10 +47,12 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         return contador
     }
 
+    //funcion que elimina un producto del carro junto a todas sus unidades
     const quitarItem=(idProdQuitado)=>{
         setListaCart(listaCart.filter(prod=>prod.id!=idProdQuitado)) //filter retorna un nuevo array filtrado
     }
 
+    //funcion que añade separadores de miles en los numeros
     const separadorDeMiles=(numero)=> {
         let partesNumero = numero.toString().split('.');
     
@@ -60,6 +61,7 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         return partesNumero.join('.');
     }
 
+    //funcion que descuenta una unidad de un producto ya agregado al carro
     const descontarUnidad=(idProducto)=>{
         listaCart.forEach(prod=>{
             if(prod.id==idProducto){
@@ -75,6 +77,7 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
         setListaCart([...listaCart])
     }
 
+    //funcion que aumenta una unidad de un producto ya agregado en el carro
     const aumentarUnidad=(idProducto)=>{
         listaCart.forEach(prod=>{
             if(prod.id==idProducto){
@@ -92,7 +95,7 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
 
     return (
         <div>
-            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, precioTotal, getCantidadTotal, quitarItem, separadorDeMiles, descontarUnidad, aumentarUnidad}}>
+            <CartContext.Provider value={{listaCart, agregarCarrito, vaciarCarrito, precioTotal, cantidadTotal, quitarItem, separadorDeMiles, descontarUnidad, aumentarUnidad}}>
                 {children}
             </CartContext.Provider>
             

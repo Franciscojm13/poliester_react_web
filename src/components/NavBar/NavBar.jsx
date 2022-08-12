@@ -4,7 +4,7 @@ import CartWidget from './CartWidget/CartWidget'
 
 const NavBar = () => {
 
-const {getCantidadTotal} = useCartContext()
+const {cantidadTotal} = useCartContext()
 
     return (
         <>
@@ -37,7 +37,7 @@ const {getCantidadTotal} = useCartContext()
                             <Link to={'/Cart'}>
                                 <li className="nav-item nav-link px-4 d-flex">  
                                     <CartWidget/>
-                                    {getCantidadTotal()!=0 && getCantidadTotal() } 
+                                    {cantidadTotal()!=0 && cantidadTotal() } 
                                 </li>
                             </Link>
                         </ul>

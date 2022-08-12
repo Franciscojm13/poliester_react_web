@@ -21,7 +21,8 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
         }
     }
 
-    function handleAddToCart(){    //abatracción de la función onAddtoCart
+    //abatracción de la función onAddtoCart
+    function handleAddToCart(){    
         if(contador<=stock){
             onAddToCart(contador)
         }

@@ -13,8 +13,8 @@ const ItemDetail = ({detalleProducto}) => {
 
     const {agregarCarrito, listaCart} = useCartContext()
 
-
-    const onAddCarrito=(cantidadTotalProducto)=>{                  //función onAdd
+    //función onAdd
+    const onAddCarrito=(cantidadTotalProducto)=>{                  
         console.log(`Se hán agregado ${cantidadTotalProducto} productos al carrito`)
         agregarCarrito({...detalleProducto, cantidad: cantidadTotalProducto})
         setCambioBotonAgregar(false)
@@ -33,13 +33,13 @@ const ItemDetail = ({detalleProducto}) => {
                             <p className="card-text lead">Detalle: Collage análogo 13x18 cm impreso en papel Fine Art.</p>
                             <p>Precio:{detalleProducto.precio} CLP</p>
 
-                            {cambioBotonAgregar ?                            //preguntamos si cantidadAgregada es true, es decir si es que existe
+                            {cambioBotonAgregar ?                            
                                 
                                     <ItemCount stock={detalleProducto.stock} initial={1} onAddToCart={onAddCarrito} />
                                 :
                                     <Link to={'/cart'} >
                                         <button className='mt-3 btn btn-success'>Ver el Carrito</button>
-                                    </Link>  //cuando el estado sea false, se mostrará este botón linkeado al cart.
+                                    </Link>
                             }
 
                         </div>

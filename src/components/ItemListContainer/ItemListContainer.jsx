@@ -21,7 +21,11 @@ const ItemListContainer = () => {
             const traerProductos = collection(baseDeDatos, 'items')
             const productosFiltrados= query(traerProductos, where('categoria', '==', idCategoria))
             getDocs(productosFiltrados)
-            .then(resp=> setProductosCollage( resp.docs.map(prod=>({id: prod.id, ...prod.data()})) ))
+            .then(resp=> setProductosCollage( 
+                resp.docs
+                    .map(prod=>({id: prod.id, ...prod.data()}))
+                    .sort((a,b)=> (a.nombre > b.nombre ? 1 : -1)) 
+                    ))
             .catch(err=> console.log(err))
             .finally(()=> setCargandoPagina(false))
         //trayendo todo el array de productos
