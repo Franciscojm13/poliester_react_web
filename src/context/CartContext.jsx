@@ -25,7 +25,6 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
 
     //funcion evento vaciar todo el carro
     const vaciarCarrito=()=>{
-        console.log("Se ha vaciado el carrito")
         setListaCart([])
     }
 
@@ -69,7 +68,6 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
                     return
                 }else{
                     prod.cantidad -= 1
-                    console.log(prod.cantidad)
                 }
                 
             }
@@ -85,7 +83,6 @@ const CartContextProvider = ({children}) => {      //componente virtual de facha
                     return
                 }else{
                     prod.cantidad += 1
-                    console.log(prod.cantidad)
                 }
             }
         })

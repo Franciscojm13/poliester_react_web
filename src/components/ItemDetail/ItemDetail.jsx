@@ -7,15 +7,13 @@ const ItemDetail = ({detalleProducto}) => {
 
     const [cambioBotonAgregar, setCambioBotonAgregar] = useState(true)
 
-    const {agregarCarrito, listaCart} = useCartContext()
+    const {agregarCarrito} = useCartContext()
 
     //función onAdd
     const onAddCarrito=(cantidadTotalProducto)=>{                  
-        console.log(`Se hán agregado ${cantidadTotalProducto} productos al carrito`)
         agregarCarrito({...detalleProducto, cantidad: cantidadTotalProducto})
         setCambioBotonAgregar(false)
     }
-    console.log(listaCart)
     
     return (
         <div className="contenedor mx-3 mb-3 p-3">

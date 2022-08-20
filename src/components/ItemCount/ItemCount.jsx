@@ -8,7 +8,6 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
 
     function funcionSumarProducto(){
         if(contador>=stock){
-            console.log(`No hay mas productos en stock, no puede agregar mas unidades al cariito.`)
             return;
         }
         setContador(contador+1)   
@@ -16,8 +15,6 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
     function funcionRestarProducto(){ 
         if(contador>1){
             setContador(contador-1)   
-        }else{
-            console.log('No puede seguir quitando unidades')
         }
     }
 

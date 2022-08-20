@@ -39,12 +39,10 @@ const ItemListContainer = () => {
         }
     }, [idCategoria])
 
-    console.log(productosCollage)
-
     //abstracción del Loading en un componente
     const CargandoPagina=()=>{         
         useEffect(()=>{
-            return ()=> console.log("componente CargandoPagina desmontado")
+            return 
         })
 
         return (

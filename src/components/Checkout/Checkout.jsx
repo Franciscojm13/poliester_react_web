@@ -26,8 +26,6 @@ const Checkout = () => {
             [e.target.name]: e.target.value
         })
     } 
-    console.log(ordenCompra)
-
 
     //mensaje que alerta sobre discordancia en los email ingresados
     const errorToastify=()=>{
@@ -69,9 +67,6 @@ const Checkout = () => {
             .finally(()=>{
                 vaciarCarrito()
             })  
-            console.log(orden)
-            console.log(idCompra)
-                
         }else{
             {errorToastify()}
         }
@@ -86,8 +81,8 @@ const Checkout = () => {
                 
                 <div className='container card   position-absolute justify-content-center align-items-center'  >
                     <div className=' ' >
-                        <h3 >Gracias por tu compra {ordenCompra.nombreComprador} !! Su numero de orden es: <b>"{idCompra}"</b></h3> 
-                        <h3>Su paquete será enviado a {ordenCompra.direccionComprador}.</h3>
+                        <h3 >Gracias por tu compra "{ordenCompra.nombreComprador}" !! Su numero de orden es: <b>"{idCompra}"</b></h3> 
+                        <h3>Su paquete será enviado a "{ordenCompra.direccionComprador}".</h3>
 
                     </div>
                     
