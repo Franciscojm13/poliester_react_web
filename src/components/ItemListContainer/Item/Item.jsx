@@ -4,8 +4,6 @@ import { Link } from "react-router-dom"
 const Item = ({item}) => {
     return (
 
-                
-                    
                         <div className="item__galeriaCollage col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3">
                             <div>
                             <Link to={`/itemDetalle/${item.id}`}><img src={item.foto} alt={"microbloqueo_"+item.id}/></Link>
@@ -18,8 +16,6 @@ const Item = ({item}) => {
                             </div>
                             
                         </div>
-                    
-                
     )
 }
 

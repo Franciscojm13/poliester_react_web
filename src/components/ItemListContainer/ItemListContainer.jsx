@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore'
+import { collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 
 import ItemList from './ItemList/ItemList'
@@ -30,8 +30,8 @@ const ItemListContainer = () => {
             .finally(()=> setCargandoPagina(false))
         //trayendo todo el array de productos
         }else{
-            const db=getFirestore()
-            const queryCollection = collection(db, 'items')   
+            const baseDeDatos=getFirestore()
+            const queryCollection = collection(baseDeDatos, 'items')   
             getDocs(queryCollection)
             .then(resp=> setProductosCollage( resp.docs.map(prod=>({id: prod.id, ...prod.data()})) ))
             .catch(err=> console.log(err))
@@ -48,7 +48,7 @@ const ItemListContainer = () => {
         })
 
         return (
-            <h2>Cargando los Items...</h2>
+            <h2>Cargando...</h2>
         )
     }
 

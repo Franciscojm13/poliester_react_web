@@ -6,14 +6,14 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
     const [contador, setContador]=useState(initial)   
 
 
-    function funcionSumarProducto(){      //handleAdd
+    function funcionSumarProducto(){
         if(contador>=stock){
             console.log(`No hay mas productos en stock, no puede agregar mas unidades al cariito.`)
             return;
         }
         setContador(contador+1)   
     }
-    function funcionRestarProducto(){    //handleResta
+    function funcionRestarProducto(){ 
         if(contador>1){
             setContador(contador-1)   
         }else{
@@ -29,7 +29,6 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
         
     }
 
-
     return (
         <>
             <div className='card d-inline-flex flex-column justify-content-center align-items-center mx-auto'>
@@ -41,7 +40,6 @@ const ItemCount = ({stock, initial, onAddToCart}) => {
                             <button className='btn btn-primary' onClick={funcionSumarProducto}> + </button>
                     </div>
                             <button className='mt-3 btn btn-success' onClick={handleAddToCart}> Agregar al carrito </button>
-
             </div>
             
         </>

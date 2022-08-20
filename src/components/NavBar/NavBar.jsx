@@ -10,8 +10,6 @@ const {cantidadTotal} = useCartContext()
         <>
         <header id="header">
 
-            
-
             <div className="d-flex justify-content-center mx-auto mt-3">
                 <Link to={'/'} style={{ textDecoration: 'none' }}><h1 className=" display-5">Poliéster</h1></Link>
                 
@@ -27,8 +25,17 @@ const {cantidadTotal} = useCartContext()
                     <div className="collapse navbar-collapse " id="navbarNav">
                         <ul className=" navbar-nav  list-unstyled text-center">
                             <Link to={'/'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4"> Inicio </li></Link>
-                            <Link to={'/categoria/Collage Tipo 1'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 1</li></Link>
-                            <Link to={'/categoria/Collage Tipo 2'} style={{ textDecoration: 'none' }}><li className="nav-item nav-link px-4">Collage Tipo 2</li></Link>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Collages
+                                </a>
+
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <Link to={'/categoria/Collage Tipo 1'} style={{ textDecoration: 'none' }}> <li className="nav-link dropdown-item" href="#">Collage Tipo 1</li> </Link>
+                                    <Link to={'/categoria/Collage Tipo 2'} style={{ textDecoration: 'none' }}> <li className="nav-link dropdown-item" href="#">Collage Tipo 2</li> </Link>
+                                    
+                                </ul>
+                                </li>
                             
                             <li className="nav-item nav-link px-4">Galletas Toyota</li>
                             <li className="nav-item nav-link px-4">Sonidos</li>

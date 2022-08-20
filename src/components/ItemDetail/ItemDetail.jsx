@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {Link} from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
-
-
-
-
 
 const ItemDetail = ({detalleProducto}) => {
 
@@ -41,9 +37,7 @@ const ItemDetail = ({detalleProducto}) => {
                                         <button className='mt-3 btn btn-success'>Ver el Carrito</button>
                                     </Link>
                             }
-
                         </div>
-                        
                     </div>
                 </div>
         </div>
